@@ -62,6 +62,7 @@ class Client(Base):
     def messages_score(self):
         """
         Returns the score of the client based on the quantity of messages sent
+        Each message provides a certain amount of points, decreasing the extra exponentially each time the user sends a new message.
 
         Returns:
             int: The score of the client based on the quantity of messages sent
@@ -84,6 +85,9 @@ class Client(Base):
     def savings_score(self, base_amount: int):
         """
         Returns the score of the client based on the savings
+        This was based on how much of the foot of the property the client has saved, 
+        giving a maximum score if that savings is greater than this base foot. If you do not have it, 
+        a lower percentage is granted, which decreases linearly.
 
         Args:
             base_payment (int): The base payment of the credit
@@ -105,6 +109,11 @@ class Client(Base):
         
         """
         Returns the score of the client based on the salary
+        In this case we work directly with the amount of credit that the user needs 
+        to request and we assume that they will be paid in 300 installments (25 years).
+        Another factor I know that was assumed was that 30% of the user's salary had to be greater 
+        than the monthly credit fee, where if this was met, the maximum score was given, otherwise 
+        the score decreased linearly. 
         
         Args:
             credit_amount (int): The amount of credit that the client is requesting
@@ -128,6 +137,8 @@ class Client(Base):
 
         """
         Returns the score of the client based on the debts due date
+        If the client is 0 days late on these delinquent debts, a maximum score is awarded, 
+        otherwise the score decreases exponentially.
 
         Returns:
             int: The score of the client based on the debts due date
@@ -147,6 +158,8 @@ class Client(Base):
 
         """
         Returns the score of the client based on the debts amount
+        Here the maximum score is given if this amount of delinquent debts adds up to zero, 
+        otherwise the score decreases exponentially.
 
         Returns:
             int: The score of the client based on the debts amount
@@ -166,6 +179,8 @@ class Client(Base):
 
         """
         Returns the score of the client
+        To calculate the score, it was divided into five main axes where each 
+        of these gives a percentage of the final score.
 
         Args:
             credit_amount (int): The amount of credit that the client is requesting
