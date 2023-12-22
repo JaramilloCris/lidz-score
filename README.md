@@ -1,4 +1,5 @@
 # Descripción
+Programa de vendedor virtual
 
 # Como ejecutar
 El programa esta hecho en FastAPI (Python 3.10+) por lo que debemos tenerlo instalado. Para esto primero debemos instalar las librerias con `pip install -r requeriments.txt` donde viene `uvicorn` con el que se ejecutara la API. Para iniciar el programa hacemos `uvicorn app.main:app --host 0.0.0.0 --port 8001 --reload`
