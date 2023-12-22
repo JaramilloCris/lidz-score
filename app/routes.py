@@ -85,6 +85,7 @@ async def get_clients_score(client_id: str, session: Session = Depends(get_sessi
 
     """
     Get a client score by id
+    Here it is assumed that 22 million will be paid as a base and 88 million will be requested in credit.
 
     Args:
         client_id (int): Client id
@@ -99,4 +100,4 @@ async def get_clients_score(client_id: str, session: Session = Depends(get_sessi
     if client is None:
         raise HTTPException(status_code=404, detail="Client not found")
     
-    return client.get_score(credit_amount=10000000, base_amount=10000000)
+    return client.get_score(credit_amount=88000000, base_amount=22000000)
