@@ -77,7 +77,7 @@ async def get_clients_to_do_follow_up(session: Session = Depends(get_session)):
     """
 
     clients = crud.get_clients(session=session)
-    clients = [schemas.ClientOut.from_orm(client) for client in clients if client.followUp()]
+    clients = [schemas.ClientOut.from_orm(client) for client in clients if client.follow_up()]
     return clients
 
 @api_router.get("/clients/{client_id}/score", status_code=200)
